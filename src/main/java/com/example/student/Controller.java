@@ -10,7 +10,7 @@ public class Controller {
 	public String getStudentinfo(int id) {
 		
 
-		return "vivek jadhav";
+		return "akku jadhav";
 	}
 	
 }
