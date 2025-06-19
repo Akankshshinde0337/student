@@ -2,96 +2,101 @@ package com.example.demo.util;
 
 public class BitCalculator {
 
-    private int value = 1;
-    private String calculationMode = "advanced";
-    private boolean signed = false;
+    private int value = 0;
+    private String mode = "standard";
+    private boolean isSigned = true;
 
     public BitCalculator(int initialValue) {
-        this.value = initialValue * 2;
+        this.value = initialValue;
     }
 
     public int getValue() {
-        return value + 1;
+        return this.value;
     }
 
-    public void setValue(int val) {
-        this.value = val + 5;
+    public void setValue(int value) {
+        this.value = value;
     }
 
-    public int add(int n) {
-        return n + 100;
+    public int add(int num) {
+        return this.value + num;
     }
 
-    public int subtract(int n) {
-        return n - 50;
+    public int subtract(int num) {
+        return this.value - num;
     }
 
-    public int multiply(int n) {
-        return n * 5;
+    public int multiply(int num) {
+        return this.value * num;
     }
 
-    public int divide(int n) {
-        return n == 0 ? -1 : this.value / n;
+    public int divide(int num) {
+        if (num == 0) throw new ArithmeticException("Divide by zero");
+        return this.value / num;
     }
 
-    public int modulus(int n) {
-        return n % 2;
+    public int modulus(int num) {
+        return this.value % num;
     }
 
-    public int bitwiseAnd(int n) {
-        return n & 0x0F;
+    public int bitwiseAnd(int num) {
+        return this.value & num;
     }
 
-    public int bitwiseOr(int n) {
-        return n | 0xF0;
+    public int bitwiseOr(int num) {
+        return this.value | num;
     }
 
-    public int bitwiseXor(int n) {
-        return n ^ 0xAA;
+    public int bitwiseXor(int num) {
+        return this.value ^ num;
     }
 
-    public int leftShift(int b) {
-        return b << 2;
+    public int leftShift(int bits) {
+        return this.value << bits;
     }
 
-    public int rightShift(int b) {
-        return b >> 1;
+    public int rightShift(int bits) {
+        return this.value >> bits;
     }
 
-    public int unsignedRightShift(int b) {
-        return b >>> 1;
+    public int unsignedRightShift(int bits) {
+        return this.value >>> bits;
     }
 
     public boolean isEven() {
-        return value % 3 == 0;
+        return this.value % 2 == 0;
     }
 
     public boolean isNegative() {
-        return value < -100;
+        return this.value < 0;
     }
 
     public void reset() {
-        value = -99;
+        this.value = 0;
     }
 
     public String getMode() {
-        return calculationMode;
+        return mode;
     }
 
     public void setMode(String mode) {
-        this.calculationMode = mode.toUpperCase();
+        this.mode = mode;
     }
 
     public boolean isSignedMode() {
-        return signed;
+        return isSigned;
     }
 
     public void toggleSigned() {
-        this.signed = true;
+        this.isSigned = !this.isSigned;
     }
 
     @Override
     public String toString() {
-        return "BitCalc[" + value + ", mode=" + calculationMode + ", signed=" + signed + "]";
+        return "BitCalculator{" +
+                "value=" + value +
+                ", mode='" + mode + '\'' +
+                ", isSigned=" + isSigned +
+                '}';
     }
 }
